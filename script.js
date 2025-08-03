@@ -4,6 +4,7 @@ $(document).ready(function() {
     createParticles();
     startProgressAnimation();
     startCountdown();
+    initMobileTypingAnimation();
     
     // Initialize all animations
     function initializeAnimations() {
@@ -110,6 +111,29 @@ $(document).ready(function() {
         updateCountdown();
         setInterval(updateCountdown, 1000);
     }
+
+    // Mobile-specific typing animation
+    function initMobileTypingAnimation() {
+        if (window.innerWidth <= 768) {
+            const typingElement = $('.typing-text');
+            const fullText = typingElement.text().trim();
+            let i = 0;
+            
+            typingElement.text(''); // Clear text before typing
+
+            // Start typing after a 1s delay to match original animation
+            setTimeout(() => {
+                const typingInterval = setInterval(() => {
+                    if (i < fullText.length) {
+                        typingElement.text(typingElement.text() + fullText[i]);
+                        i++;
+                    } else {
+                        clearInterval(typingInterval);
+                    }
+                }, 150); // Adjust typing speed here (in ms)
+            }, 1000);
+        }
+    }
     
     // Add smooth scrolling effect (if content becomes scrollable)
     $('a[href^="#"]').on('click', function(event) {
@@ -119,22 +143,6 @@ $(document).ready(function() {
             $('html, body').animate({
                 scrollTop: target.offset().top
             }, 1000);
-        }
-    });
-    
-    // Handle window resize for responsive adjustments
-    $(window).on('resize', function() {
-        // Adjust typing animation container for mobile
-        const titleText = $('.typing-text').data('text');
-        if (window.innerWidth <= 768) {
-            if (titleText.length > 20) {
-                $('.main-title').css('height', 'auto');
-                $('.main-title').css('min-height', '2.8rem');
-                $('.main-title').css('padding', '0.5rem 0');
-            }
-        } else {
-            $('.main-title').css('height', '4.2rem');
-            $('.main-title').css('padding', '0');
         }
     });
     
@@ -172,18 +180,4 @@ $(document).ready(function() {
     // Apply time-based adjustments after initial animations
     setTimeout(adjustForTimeOfDay, 5000);
     
-    // Mobile optimization for typing animation
-    // Check on load and after animation completes
-    setTimeout(function() {
-        if (window.innerWidth <= 768) {
-            const titleElement = $('.main-title');
-            const typingElement = $('.typing-text');
-            
-            // Ensure text doesn't overflow on small screens
-            if (typingElement.width() > titleElement.width()) {
-                titleElement.css('height', 'auto');
-                titleElement.css('min-height', '2.8rem');
-            }
-        }
-    }, 6000); // Check after typing animation (4s) + delay (1s) + buffer
 });

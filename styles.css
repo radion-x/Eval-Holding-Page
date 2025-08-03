@@ -441,23 +441,25 @@ body {
     .main-title {
         font-size: 1.8rem;
         height: auto; /* Allow natural height for 2 lines */
-        min-height: 7rem; /* Space for 2 lines plus animation */
         margin-bottom: 0.8rem;
+        text-align: center; /* Center the inline-block child */
+        min-height: 5.2rem; /* Give enough space for two lines to avoid jump */
     }
-    
+
     .typing-text {
         font-size: 1.8rem;
         max-width: 100%;
-        /* MOBILE TYPING: Use clip-path for typing effect with wrapping */
-        white-space: normal; /* Allow text to wrap to 2 lines */
-        word-wrap: break-word;
+        white-space: normal; /* Allow text to wrap */
         line-height: 1.3;
-        display: block; /* Take full width for proper wrapping */
+        display: inline-block;
         border-right: 3px solid #4fd1c7;
-        animation: mobileTyping 4s steps(25) 1s both, blink 1s infinite;
-        /* Use clip-path instead of width/height to avoid layout issues */
-        clip-path: inset(0 100% 0 0);
-        width: 100%;
+        animation: blink 1s infinite; /* JS will handle typing, so only blink */
+        text-align: left;
+        vertical-align: top;
+        /* Override desktop animation styles */
+        width: auto;
+        overflow: visible;
+        position: relative; /* Ensure it behaves predictably */
     }
     
     .subtitle {
@@ -483,14 +485,3 @@ body {
     }
 }
 
-/* Mobile-specific typing animation using clip-path */
-@media (max-width: 768px) {
-    @keyframes mobileTyping {
-        from {
-            clip-path: inset(0 100% 0 0);
-        }
-        to {
-            clip-path: inset(0 0 0 0);
-        }
-    }
-}
