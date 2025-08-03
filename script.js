@@ -5,28 +5,9 @@ $(document).ready(function() {
     startProgressAnimation();
     startCountdown();
     
-    // Typing animation for main title
-    function typeWriter(element, text, speed = 100) {
-        let i = 0;
-        element.text('');
-        
-        function type() {
-            if (i < text.length) {
-                element.text(element.text() + text.charAt(i));
-                i++;
-                setTimeout(type, speed);
-            }
-        }
-        type();
-    }
-    
     // Initialize all animations
     function initializeAnimations() {
-        // Start typing animation after a delay
-        setTimeout(function() {
-            const titleText = $('.typing-text').data('text');
-            typeWriter($('.typing-text'), titleText, 120);
-        }, 1000);
+        // No typing animation logic needed - CSS handles it
         
         // Add hover effects to feature items
         $('.feature-item').hover(
@@ -141,123 +122,20 @@ $(document).ready(function() {
         }
     });
     
-    // Easter egg: Konami code for admin access
-    let konamiCode = [];
-    const konamiSequence = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // Up Up Down Down Left Right Left Right B A
-    
-    $(document).keydown(function(event) {
-        konamiCode.push(event.keyCode);
-        
-        if (konamiCode.length > konamiSequence.length) {
-            konamiCode.shift();
-        }
-        
-        if (JSON.stringify(konamiCode) === JSON.stringify(konamiSequence)) {
-            showAdminPanel();
-            konamiCode = [];
-        }
-    });
-    
-    function showAdminPanel() {
-        const adminPanel = $(`
-            <div id="admin-panel" style="
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: rgba(0, 0, 0, 0.9);
-                color: white;
-                padding: 2rem;
-                border-radius: 10px;
-                z-index: 1000;
-                text-align: center;
-                border: 2px solid #4fd1c7;
-            ">
-                <h3>🏥 Admin Access Detected</h3>
-                <p>System status: Upgrading patient care systems</p>
-                <p>Database integrity: ✅ 100%</p>
-                <p>Security protocols: ✅ Active</p>
-                <button id="close-admin" style="
-                    margin-top: 1rem;
-                    padding: 0.5rem 1rem;
-                    background: #4fd1c7;
-                    color: black;
-                    border: none;
-                    border-radius: 5px;
-                    cursor: pointer;
-                ">Close</button>
-            </div>
-        `);
-        
-        $('body').append(adminPanel);
-        adminPanel.hide().fadeIn(500);
-        
-        $('#close-admin').click(function() {
-            adminPanel.fadeOut(500, function() {
-                adminPanel.remove();
-            });
-        });
-        
-        // Auto-close after 10 seconds
-        setTimeout(function() {
-            if ($('#admin-panel').length) {
-                $('#admin-panel').fadeOut(500, function() {
-                    $(this).remove();
-                });
+    // Handle window resize for responsive adjustments
+    $(window).on('resize', function() {
+        // Adjust typing animation container for mobile
+        const titleText = $('.typing-text').data('text');
+        if (window.innerWidth <= 768) {
+            if (titleText.length > 20) {
+                $('.main-title').css('height', 'auto');
+                $('.main-title').css('min-height', '2.8rem');
+                $('.main-title').css('padding', '0.5rem 0');
             }
-        }, 10000);
-    }
-    
-    // Add glitch effect to medical icon occasionally
-    function addGlitchEffect() {
-        const medicalIcon = $('.medical-icon i');
-        medicalIcon.addClass('glitch-effect');
-        
-        setTimeout(function() {
-            medicalIcon.removeClass('glitch-effect');
-        }, 500);
-    }
-    
-    // Trigger glitch effect randomly
-    setInterval(function() {
-        if (Math.random() < 0.1) { // 10% chance every 5 seconds
-            addGlitchEffect();
+        } else {
+            $('.main-title').css('height', '4.2rem');
+            $('.main-title').css('padding', '0');
         }
-    }, 5000);
-    
-    // Add CSS for glitch effect dynamically
-    $('<style>')
-        .prop('type', 'text/css')
-        .html(`
-            .glitch-effect {
-                animation: glitch 0.5s !important;
-            }
-            
-            @keyframes glitch {
-                0% { transform: scale(1) skew(0deg); filter: hue-rotate(0deg); }
-                10% { transform: scale(1.05) skew(1deg); filter: hue-rotate(90deg); }
-                20% { transform: scale(0.95) skew(-1deg); filter: hue-rotate(180deg); }
-                30% { transform: scale(1.02) skew(0.5deg); filter: hue-rotate(270deg); }
-                40% { transform: scale(0.98) skew(-0.5deg); filter: hue-rotate(0deg); }
-                50% { transform: scale(1.01) skew(0.2deg); filter: hue-rotate(45deg); }
-                60% { transform: scale(0.99) skew(-0.2deg); filter: hue-rotate(135deg); }
-                70% { transform: scale(1.03) skew(0.3deg); filter: hue-rotate(225deg); }
-                80% { transform: scale(0.97) skew(-0.3deg); filter: hue-rotate(315deg); }
-                90% { transform: scale(1.01) skew(0.1deg); filter: hue-rotate(45deg); }
-                100% { transform: scale(1) skew(0deg); filter: hue-rotate(0deg); }
-            }
-        `)
-        .appendTo('head');
-    
-    // Console message for developers
-    console.log('%c🏥 Spinal Surgery Center - Maintenance Mode', 'color: #4fd1c7; font-size: 18px; font-weight: bold;');
-    console.log('%cSystem Status: Upgrading for better patient care', 'color: #667eea; font-size: 12px;');
-    console.log('%cEstimated completion: 2 hours', 'color: #764ba2; font-size: 12px;');
-    
-    // Performance monitoring
-    window.addEventListener('load', function() {
-        const loadTime = performance.now();
-        console.log(`%cPage loaded in ${Math.round(loadTime)}ms`, 'color: #4fd1c7; font-size: 12px;');
     });
     
     // Handle visibility change (tab switching)
@@ -293,4 +171,19 @@ $(document).ready(function() {
     
     // Apply time-based adjustments after initial animations
     setTimeout(adjustForTimeOfDay, 5000);
+    
+    // Mobile optimization for typing animation
+    // Check on load and after animation completes
+    setTimeout(function() {
+        if (window.innerWidth <= 768) {
+            const titleElement = $('.main-title');
+            const typingElement = $('.typing-text');
+            
+            // Ensure text doesn't overflow on small screens
+            if (typingElement.width() > titleElement.width()) {
+                titleElement.css('height', 'auto');
+                titleElement.css('min-height', '2.8rem');
+            }
+        }
+    }, 6000); // Check after typing animation (4s) + delay (1s) + buffer
 });
