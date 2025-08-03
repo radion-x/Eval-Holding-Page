@@ -127,11 +127,11 @@ $(document).ready(function() {
                     if (i < fullText.length) {
                         typingElement.text(typingElement.text() + fullText[i]);
                         i++;
-                    } else {
-                        clearInterval(typingInterval);
-                    }
-                }, 150); // Adjust typing speed here (in ms)
-            }, 1000);
+                   } else {
+                       clearInterval(typingInterval);
+                   }
+               }, 150); // Adjust typing speed here (in ms)
+           }, 1000);
         }
     }
     

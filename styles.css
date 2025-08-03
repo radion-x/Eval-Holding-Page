@@ -442,8 +442,8 @@ body {
         font-size: 1.8rem;
         height: auto; /* Allow natural height for 2 lines */
         margin-bottom: 0.8rem;
-        text-align: center; /* Center the inline-block child */
         min-height: 5.2rem; /* Give enough space for two lines to avoid jump */
+        text-align: center; /* Use text-align to center the child */
     }
 
     .typing-text {
@@ -454,10 +454,10 @@ body {
         display: inline-block;
         border-right: 3px solid #4fd1c7;
         animation: blink 1s infinite; /* JS will handle typing, so only blink */
-        text-align: left;
+        text-align: center;
         vertical-align: top;
         /* Override desktop animation styles */
-        width: auto;
+        width: auto; /* Let width grow with content */
         overflow: visible;
         position: relative; /* Ensure it behaves predictably */
     }
