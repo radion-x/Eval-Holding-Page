@@ -331,26 +331,6 @@ body {
     text-shadow: 0 0 8px rgba(79, 209, 199, 0.5);
 }
 
-/* Completion time */
-.completion-time {
-    margin-top: 2rem;
-    opacity: 0;
-    animation: fadeInUp 1s ease-out 4.5s forwards;
-}
-
-.time-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    font-size: 1.1rem;
-    color: #e2e8f0;
-}
-
-.countdown {
-    font-weight: 600;
-    color: #4fd1c7;
-}
 
 /* Particles */
 .particles {
@@ -415,10 +395,6 @@ body {
     opacity: 0;
 }
 
-.fade-in-delayed-5 {
-    animation: fadeInUp 1s ease-out 4.5s forwards;
-    opacity: 0;
-}
 
 @keyframes fadeInUp {
     from {

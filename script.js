@@ -3,7 +3,6 @@ $(document).ready(function() {
     initializeAnimations();
     createParticles();
     startProgressAnimation();
-    startCountdown();
     initMobileTypingAnimation();
     
     // Initialize all animations
@@ -84,32 +83,6 @@ $(document).ready(function() {
                 $('.progress-percentage').text(Math.round(progress) + '%');
             }, intervalTime);
         }, 3500); // Start after 3.5 seconds
-    }
-    
-    // Countdown timer
-    function startCountdown() {
-        // Set target time to 2 hours from now
-        const targetTime = new Date().getTime() + (2 * 60 * 60 * 1000);
-        
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetTime - now;
-            
-            if (distance > 0) {
-                const hours = Math.floor(distance / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                
-                const timeString = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-                $('#countdown').text(timeString);
-            } else {
-                $('#countdown').text('00:00:00');
-            }
-        }
-        
-        // Update immediately and then every second
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
     }
 
     // Mobile-specific typing animation
