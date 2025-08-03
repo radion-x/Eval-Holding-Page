@@ -443,7 +443,9 @@ body {
         height: auto; /* Allow natural height for 2 lines */
         margin-bottom: 0.8rem;
         min-height: 5.2rem; /* Give enough space for two lines to avoid jump */
-        text-align: center; /* Use text-align to center the child */
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .typing-text {
