@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Martinez Spinal Surgery - Maintenance</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Background animated elements -->
+        <div class="background-animation">
+            <div class="floating-element" style="--delay: 0s; --duration: 8s;"></div>
+            <div class="floating-element" style="--delay: 2s; --duration: 12s;"></div>
+            <div class="floating-element" style="--delay: 4s; --duration: 10s;"></div>
+            <div class="floating-element" style="--delay: 6s; --duration: 14s;"></div>
+        </div>
+
+        <!-- Main content -->
+        <div class="content">
+            <!-- Medical cross icon with pulse animation -->
+            <div class="medical-icon">
+                <i class="fas fa-spine pulse"></i>
+            </div>
+
+            <!-- Main heading with typing animation -->
+            <h1 class="main-title">
+                <span class="typing-text" data-text="System Upgrade in Progress"></span>
+            </h1>
+
+            <!-- Subtitle -->
+            <h2 class="subtitle fade-in">
+                Enhancing Our Digital Healthcare Experience
+            </h2>
+
+            <!-- Description -->
+            <p class="description fade-in-delayed">
+                We are currently upgrading our systems to serve you better. Our commitment to providing 
+                exceptional spinal care remains our top priority. We'll be back online shortly with 
+                enhanced features and improved patient experience.
+            </p>
+
+            <!-- Progress bar -->
+            <div class="progress-container fade-in-delayed-2">
+                <div class="progress-label">Upgrade Progress</div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-percentage">0%</div>
+            </div>
+
+            <!-- Features being upgraded -->
+            <div class="features-grid fade-in-delayed-3">
+                <div class="feature-item">
+                    <i class="fas fa-user-md"></i>
+                    <span>Patient Portal</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Appointment System</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Security Enhancements</span>
+                </div>
+                <div class="feature-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Mobile Experience</span>
+                </div>
+            </div>
+
+            <!-- Contact information -->
+            <div class="contact-info fade-in-delayed-4">
+                <h3>For Urgent Medical Needs</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+61395739691">+61 3 9573 9691</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:admin.buckland@mog.com.au">admin.buckland@mog.com.au</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estimated completion time -->
+            <div class="completion-time fade-in-delayed-5">
+                <div class="time-container">
+                    <i class="fas fa-clock"></i>
+                    <span>Estimated completion: </span>
+                    <span class="countdown" id="countdown"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Particle system -->
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
